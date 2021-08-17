@@ -1,4 +1,6 @@
 # Import modules here. Use the 'as' keyword to rename 'print_all' as 'display_results'.
+import random
+import random_select
 import averages
 from display import print_all as display_results
 
@@ -19,17 +21,17 @@ for index in range(len(prompts)):
   if response.lower() == 'y':
     if index == 0:
       # Call 'display_results' here and pass in all necessary arguments.
-
+      display_results(astronauts,test_titles,scores)
     elif index == 1:
       for title_index in range(len(test_titles)):
-        avg = # Call 'average_for_test' here. Pass in title_index and scores as arguments.
+        avg = averages.average_for_test(title_index,scores)  # Call 'average_for_test' here. Pass in title_index and scores as arguments.
         print("{0} test average = {1}%".format(test_titles[title_index], avg))
     elif index == 2:
       for astronaut_index in range(len(astronauts)):
-        avg = # Call 'average_for_student' here. Pass in astronaut_index and scores as arguments.
+        avg = averages.average_for_student(astronaut_index,scores)  # Call 'average_for_student' here. Pass in astronaut_index and scores as arguments.
         print("{0}'s test average = {1}%".format(astronauts[astronaut_index], avg))
     else:
-      walker = # Call 'random_from_list' to pick a spacewalker from the astronauts list.
-      print(walker + " is the next spacewalker.")
+      walker = random_select.random_from_list(astronauts) # Call 'random_from_list' to pick a spacewalker from the astronauts list.
+      print(f"{walker} is the next spacewalker.")
   else:
     print("Option skipped.")
